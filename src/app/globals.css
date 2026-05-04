@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0F172A;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: #2463eb;
+  --color-background-light: #f6f6f8;
+  --color-background-dark: #111621;
+  --color-surface: #F8FAFC;
+  --color-text-main: #0F172A;
+  --color-muted: #64748B;
+  --color-accent: #10B981;
+  --color-warning: #F59E0B;
+
+  --font-display: var(--font-spline-sans), sans-serif;
+  --font-body: var(--font-spline-sans), sans-serif;
+  --font-sans: var(--font-spline-sans), sans-serif;
+
+  --radius-DEFAULT: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  --radius-card: 16px;
+
+  --shadow-soft: 0 10px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+  --shadow-soft-hover: 0 20px 25px -5px rgba(37, 99, 235, 0.15), 0 10px 10px -5px rgba(37, 99, 235, 0.1);
+  --shadow-btn: 0 4px 14px 0 rgba(36, 99, 235, 0.39);
+
+  --animate-fade-in: fadeIn 0.3s ease-out;
+  --animate-slide-in-right: slideInRight 0.3s ease-out;
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
