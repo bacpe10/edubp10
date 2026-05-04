@@ -9,7 +9,7 @@ const SUBJECTS = [
   {
     id: BUNDLE_DETAILS.id,
     name: `${BUNDLE_DETAILS.name} (Bestseller)`,
-    desc: "Toate cele 3 variante oficiale + Rezolvările Premium pentru toate materiile tale.",
+    desc: "Materialele oficiale + Rezolvările Premium pentru toate materiile tale.",
     price: PRICES.BUNDLE_PLUS,
     oldPrice: 946,
     profil: "Toate",
@@ -212,42 +212,52 @@ export default function Catalog() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 pb-20">
-              {/* Sidebar Filters */}
-              <aside className="lg:col-span-3 space-y-8">
+              {/* Filters: Horizontal scroll on mobile, Sidebar on desktop */}
+              <aside className="lg:col-span-3 flex flex-col gap-6">
+                
                 {/* Profil Filter */}
-                <div className="bg-surface p-6 rounded-xl border border-slate-100">
-                  <h3 className="font-bold text-lg mb-4 text-text-main">Profil</h3>
-                  <div className="space-y-3">
+                <div className="bg-surface p-4 md:p-6 rounded-2xl border border-slate-100 lg:block">
+                  <h3 className="font-bold text-sm md:text-lg mb-3 md:mb-4 text-text-main flex items-center gap-2">
+                    <span className="material-symbols-outlined text-primary text-[20px]">person_search</span>
+                    Profil
+                  </h3>
+                  <div className="flex lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide lg:overflow-visible">
                     {["Toate", "Real", "Uman"].map(p => (
-                      <label key={p} className="flex items-center gap-3 cursor-pointer group">
-                        <input 
-                          checked={filterProfil === p}
-                          onChange={() => setFilterProfil(p)}
-                          className="form-radio text-primary focus:ring-primary h-5 w-5 border-slate-300" 
-                          name="profil" 
-                          type="radio" 
-                        />
-                        <span className="text-muted group-hover:text-text-main font-medium transition-colors">{p}</span>
-                      </label>
+                      <button 
+                        key={p}
+                        onClick={() => setFilterProfil(p)}
+                        className={`flex-shrink-0 px-4 py-2 lg:px-4 lg:py-3 rounded-xl border text-sm font-bold transition-all flex items-center gap-2 ${
+                          filterProfil === p 
+                          ? "bg-primary text-white border-primary shadow-md shadow-primary/20" 
+                          : "bg-white text-slate-600 border-slate-200 hover:border-primary/30"
+                        }`}
+                      >
+                        <div className={`w-2 h-2 rounded-full ${filterProfil === p ? "bg-white" : "bg-slate-300"}`}></div>
+                        {p}
+                      </button>
                     ))}
                   </div>
                 </div>
 
                 {/* Materie Filter */}
-                <div className="bg-surface p-6 rounded-xl border border-slate-100">
-                  <h3 className="font-bold text-lg mb-4 text-text-main">Materie</h3>
-                  <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                <div className="bg-surface p-4 md:p-6 rounded-2xl border border-slate-100">
+                  <h3 className="font-bold text-sm md:text-lg mb-3 md:mb-4 text-text-main flex items-center gap-2">
+                    <span className="material-symbols-outlined text-primary text-[20px]">book</span>
+                    Materie
+                  </h3>
+                  <div className="flex lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide lg:overflow-visible lg:max-h-[400px] lg:overflow-y-auto lg:pr-2 custom-scrollbar">
                     {["Toate", "Română", "Matematică", "Istorie", "Engleză", "Rusă", "Geografie", "Biologie", "Chimie", "Fizică", "Informatică"].map(m => (
-                      <label key={m} className="flex items-center gap-3 cursor-pointer group">
-                        <input 
-                          checked={filterMaterie === m}
-                          onChange={() => setFilterMaterie(m)}
-                          className="form-radio text-primary focus:ring-primary h-5 w-5 border-slate-300" 
-                          name="materie" 
-                          type="radio" 
-                        />
-                        <span className="text-muted group-hover:text-text-main font-medium transition-colors">{m}</span>
-                      </label>
+                      <button 
+                        key={m}
+                        onClick={() => setFilterMaterie(m)}
+                        className={`flex-shrink-0 px-4 py-2 lg:px-4 lg:py-3 rounded-xl border text-sm font-bold transition-all flex items-center gap-2 ${
+                          filterMaterie === m 
+                          ? "bg-primary text-white border-primary shadow-md shadow-primary/20" 
+                          : "bg-white text-slate-600 border-slate-200 hover:border-primary/30"
+                        }`}
+                      >
+                        {m}
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -343,16 +353,18 @@ export default function Catalog() {
                       const currentColors = colorMap[subject.color as string] || colorMap["blue"];
 
                       return (
-                        <Link key={subject.id} href={`/materie/${subject.id}`} className="group bg-white border border-slate-100 rounded-xl p-6 flex flex-col shadow-sm hover:shadow-soft hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                        <Link key={subject.id} href={`/materie/${subject.id}`} className="group bg-white border border-slate-100 rounded-2xl p-4 sm:p-6 flex flex-col shadow-sm hover:shadow-soft hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
                           <div className={`absolute top-0 left-0 w-full h-1 ${currentColors.bar}`}></div>
-                          <div className={`h-12 w-12 rounded-lg flex items-center justify-center mb-4 ${currentColors.box} ${currentColors.text}`}>
-                            <span className="material-symbols-outlined text-3xl">{subject.icon}</span>
+                          <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-xl flex items-center justify-center mb-3 sm:mb-4 ${currentColors.box} ${currentColors.text}`}>
+                            <span className="material-symbols-outlined text-2xl sm:text-3xl">{subject.icon}</span>
                           </div>
-                          <h3 className="text-xl font-bold text-text-main mb-1">{subject.name}</h3>
-                          <p className="text-muted text-sm mb-4 flex-grow">{subject.desc}</p>
-                          <div className="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
-                            <span className="font-bold text-primary">{subject.price} MDL</span>
-                            <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_forward</span>
+                          <h3 className="text-lg sm:text-xl font-bold text-text-main mb-1">{subject.name}</h3>
+                          <p className="text-muted text-xs sm:text-sm mb-4 flex-grow line-clamp-2 sm:line-clamp-none">{subject.desc}</p>
+                          <div className="mt-auto pt-3 sm:pt-4 border-t border-slate-100 flex justify-between items-center">
+                            <span className="font-black text-primary text-base sm:text-lg">{subject.price} MDL</span>
+                            <div className="size-8 sm:size-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                               <span className="material-symbols-outlined text-[18px] sm:text-[22px]">arrow_forward</span>
+                            </div>
                           </div>
                         </Link>
                       );

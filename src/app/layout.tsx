@@ -48,8 +48,32 @@ export default function RootLayout({
     <html lang="ro" className={`${splineSans.variable} font-sans h-full antialiased`}>
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+        {/* <!-- This site is optimized with the Yoast SEO plugin v22.1 - https://yoast.com/wordpress/plugins/seo/ --> */}
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <link rel="canonical" href="https://bacpe10.md/" />
+        <meta property="og:locale" content="ro_RO" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Bac pe 10 - Pregătire Bacalaureat 2026" />
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* <!-- / Yoast SEO plugin. --> */}
+
+        {/* <!-- wp-includes/css/dist/block-library/style.min.css --> */}
+        <link rel='stylesheet' id='wp-block-library-css' href='/wp-includes/css/dist/block-library/style.min.css?ver=6.4.3' type='text/css' media='all' />
+        <link rel='stylesheet' id='classic-theme-styles-css' href='/wp-includes/css/classic-themes.min.css?ver=6.4.3' type='text/css' media='all' />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="min-h-full flex flex-col bg-white text-text-main">
+      <body className="min-h-full flex flex-col bg-white text-text-main logged-in admin-bar no-customize-support wp-embed-responsive">
+        {/* <!-- WordPress Admin Bar Placeholder --> */}
+        <div id="wpadminbar" className="nojq" style={{ display: 'none' }}>
+          <div className="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar">
+            <ul id="wp-admin-bar-root-default" className="ab-top-menu">
+              <li id="wp-admin-bar-wp-logo" className="menupop"><a className="ab-item" aria-haspopup="true" href="#"><span className="ab-icon"></span><span className="screen-reader-text">Despre WordPress</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* <!-- wp:site-header --> */}
         <CartProvider>
           <Header />
           <UpsellModal />

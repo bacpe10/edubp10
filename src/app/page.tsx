@@ -1,204 +1,221 @@
-import Image from "next/image";
-import Link from "next/link";
+import FAQ from "@/components/FAQ";
 import { getSubjectPrice } from "@/constants/products";
-
-// Triggering HMR
-// Dynamic student count calculation
-function getDynamicStudentCount() {
-  const baseCount = 5234;
-  const startDate = new Date("2024-01-01T00:00:00Z");
-  const now = new Date();
-  const diffDays = Math.floor((now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
-  
-  // Deterministic daily increment: base + 3*days + (hash of days)
-  const dailyJitter = (diffDays * 13) % 7; 
-  const totalCount = baseCount + (diffDays * 3) + dailyJitter;
-  
-  return totalCount.toLocaleString("en-US"); // Using en-US for the comma separator as in original
-}
+import Link from "next/link";
 
 export default function Home() {
-  const studentCount = getDynamicStudentCount();
+  // Dynamic student count calculation
+  const startCount = 7430;
+  const daysSinceStart = Math.floor((new Date().getTime() - new Date('2024-09-01').getTime()) / (1000 * 60 * 60 * 24));
+  const studentCount = startCount + (daysSinceStart * 12);
+
+  const subjects = [
+    { id: 'romana', name: 'Limba Română', icon: 'menu_book', color: 'bg-orange-50 text-orange-600' },
+    { id: 'matematica', name: 'Matematica', icon: 'calculate', color: 'bg-blue-50 text-blue-600' },
+    { id: 'istorie', name: 'Istoria', icon: 'history_edu', color: 'bg-purple-50 text-purple-600' },
+    { id: 'geografie', name: 'Geografia', icon: 'public', color: 'bg-green-50 text-green-600' },
+    { id: 'engleza', name: 'Limba Engleză', icon: 'language', color: 'bg-red-50 text-red-600' },
+    { id: 'biologie', name: 'Biologia', icon: 'biotech', color: 'bg-emerald-50 text-emerald-600' }
+  ];
 
   return (
-    <div className="relative flex h-auto w-full flex-col bg-surface group/design-root overflow-x-hidden">
-      <div className="layout-container flex h-full grow flex-col">
-        <div className="px-4 md:px-8 lg:px-40 flex flex-1 justify-center py-5">
-          <div className="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+    <div className="flex flex-col min-h-screen bg-white overflow-x-hidden site-content wp-block-group">
+      {/* <!-- wp:heading {"level":1} --> */}
+      {/* 1. HERO SECTION */}
+      <section className="relative pt-20 pb-32 lg:pt-32 lg:pb-48 overflow-hidden entry-header">
+        {/* Abstract Background Decor */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1400px] pointer-events-none -z-10">
+          <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-[10%] left-[-10%] w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-[100px]"></div>
+        </div>
 
-            
-            {/* Hero Section */}
-            <main className="w-full max-w-[1200px] mx-auto">
-              <div className="flex flex-col lg:flex-row items-center gap-12 px-4 md:px-10 py-16 lg:py-24">
-                {/* Left Content */}
-                <div className="flex flex-col gap-6 flex-1 w-full relative z-10">
-                  <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-accent px-4 py-2 rounded-full w-fit animate-fade-in hover:shadow-sm transition-shadow">
-                    <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                    <span className="text-sm font-semibold tracking-wide">Peste {studentCount} de elevi mulțumiți</span>
-                  </div>
-                  <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-text-main leading-tight tracking-tight drop-shadow-sm mb-6 lg:mb-8 font-display">
-                Materiale Oficiale <br/><span className="text-primary relative inline-block">BAC 2026<div className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400 opacity-40 rounded"></div></span>
+        <div className="layout-container px-4 md:px-10">
+          <div className="flex flex-col items-center text-center max-w-4xl mx-auto gap-12">
+            {/* Centered Content */}
+            <div className="flex flex-col items-center gap-8">
+              <div className="inline-flex items-center gap-3 bg-white border border-slate-200 px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3].map(i => (
+                    <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
+                      <img src={`/images/avatars/avatar${i}.png`} alt="Student" className="w-full h-full object-cover" />
+                    </div>
+                  ))}
+                </div>
+                <span className="text-sm font-black text-slate-700 tracking-tight">Peste {studentCount.toLocaleString()} de elevi reușiți</span>
+              </div>
+
+              <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-text-main leading-[0.95] tracking-tighter font-display drop-shadow-sm">
+                Ia BAC-ul <br />
+                <span className="text-primary relative inline-block">Din Prima<div className="absolute -bottom-4 left-0 w-full h-3 bg-yellow-400 opacity-40 rounded-full"></div></span>
               </h1>
-              <p className="text-lg md:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mb-8 lg:mb-12">
-                Descarcă instant exmanele oficiale tip PDF, structurate. Învață exact ce se dă, de oriunde, de pe telefon sau laptop.
+
+              <p className="text-xl md:text-3xl text-slate-500 font-medium leading-relaxed max-w-2xl">
+                Variantele de la BAC 2026, rezolvate explicate. Tot ce ai nevoie ca să iei un <span className="text-text-main font-black">10 sigur</span>.
               </p>
-                    <Link href="/catalog" className="flex w-fit cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-8 bg-primary text-white text-lg font-bold leading-normal tracking-wide shadow-btn hover:shadow-soft-hover hover:-translate-y-0.5 transition-all duration-300">
-                      <span className="truncate">Vezi Materialele</span>
-                    </Link>
-                </div>
-                {/* Right Illustration */}
-                <div className="flex-1 w-full flex justify-center lg:justify-end relative">
-                  <div className="absolute inset-0 bg-blue-50 rounded-full blur-3xl opacity-60 w-3/4 h-3/4 m-auto"></div>
-                  <Image
-                    alt="Elevi liceeni zâmbind uitându-se la laptop împreună"
-                    className="w-full max-w-[500px] aspect-square object-cover rounded-[3rem] shadow-2xl relative z-10 border-4 border-white"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAahFSk9I9BekgERaOXwPC4FOvkK54-BXUO0lh-6FLm3W2lULS2jrylW7q9gQvDJe2-5Z5Mlxg84kjtKO5N8ZyD5QKljPruBcTAT72OzD8A2aE7FK07LGY9V_sjJkojyVwe8d07l6xzZWUA9dMOpaDEkVbqzCwA-9UhEzPXVh25fAlWIkrB-tjUhTRnWhQOjFI02LIU_t7xv-4-867gXnHA49h-v-ov6YTuIUDEpeKAnjH0eTah8FByX4L1VIz88WCK9GUqylsqZllr"
-                    width={500}
-                    height={500}
-                    priority
-                  />
-                </div>
+
+              <div className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto mt-4">
+                <Link
+                  href="/pachet"
+                  className="group w-full sm:w-auto bg-primary hover:bg-blue-700 text-white font-black h-20 px-12 rounded-[24px] shadow-[0_20px_40px_-10px_rgba(36,99,235,0.5)] transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-4 text-xl"
+                >
+                  Vezi Pachetul Complet
+                  <span className="material-symbols-outlined text-2xl group-hover:translate-x-1 transition-transform">rocket_launch</span>
+                </Link>
+                <Link
+                  href="/catalog"
+                  className="w-full sm:w-auto px-10 h-20 rounded-[24px] border-2 border-slate-100 font-black text-slate-600 hover:bg-slate-50 transition-all flex items-center justify-center text-lg"
+                >
+                  Alege Materia
+                </Link>
               </div>
 
-              {/* Feature Bar */}
-              <div className="px-4 md:px-10 py-12">
-                <h2 className="sr-only">Beneficii Bac pe 10</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="flex items-center gap-4 rounded-xl border border-blue-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 text-primary">
-                      <span className="material-symbols-outlined text-2xl">description</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <h3 className="text-text-main text-base font-bold">Materiale PDF</h3>
-                      <p className="text-muted text-sm font-medium mt-1">Învață de pe orice dispozitiv</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 rounded-xl border border-blue-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 text-primary">
-                      <span className="material-symbols-outlined text-2xl">check_circle</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <h3 className="text-text-main text-base font-bold">Rezolvări Pas cu Pas</h3>
-                      <p className="text-muted text-sm font-medium mt-1">Înțelegi logica, nu doar tocești</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 rounded-xl border border-blue-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 text-primary">
-                      <span className="material-symbols-outlined text-2xl">calendar_month</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <h3 className="text-text-main text-base font-bold">Actualizat 2026</h3>
-                      <p className="text-muted text-sm font-medium mt-1">Conținut adaptat noii programe</p>
-                    </div>
-                  </div>
+              <div className="flex items-center gap-8 text-slate-400 font-black text-[11px] uppercase tracking-[0.2em] mt-6">
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base text-green-500">verified</span>
+                  Acces Instant
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base text-green-500">history</span>
+                  Actualizat 2026
                 </div>
               </div>
-
-              {/* Subject Grid Section */}
-              <div className="px-4 md:px-10 py-16 bg-surface rounded-t-[3rem]">
-                <div className="flex justify-between items-end mb-10">
-                  <div>
-                    <h2 className="text-text-main text-3xl font-extrabold tracking-tight">Alege materia</h2>
-                    <p className="text-muted text-lg mt-2 font-medium">Ghiduri complete pentru un 10 sigur.</p>
-                  </div>
-                  <Link href="/catalog" className="hidden sm:flex items-center gap-1 text-primary font-bold hover:underline">
-                    Toate materiile <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                  </Link>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {/* Card 1 */}
-                  <Link href="/materie/matematica-real" className="group flex flex-col bg-white rounded-[16px] shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden border-t-4 border-primary">
-                    <div className="p-6 flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-blue-50 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <span className="material-symbols-outlined text-2xl">calculate</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-text-main mb-2">Matematică (Real)</h3>
-                      <p className="text-muted text-sm font-medium mb-6 flex-grow">Teorie, formule și sute de exerciții rezolvate pas cu pas.</p>
-                      <div className="flex justify-between items-center mt-auto pt-4 border-t border-slate-100">
-                        <span className="text-text-main font-bold">{getSubjectPrice('matematica-real', 'test-simplu')} MDL</span>
-                        <span className="material-symbols-outlined text-primary">add_shopping_cart</span>
-                      </div>
-                    </div>
-                  </Link>
-                  {/* Card 2 */}
-                  <Link href="/materie/romana-real" className="group flex flex-col bg-white rounded-[16px] shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden border-t-4 border-indigo-500">
-                    <div className="p-6 flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <span className="material-symbols-outlined text-2xl">menu_book</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-text-main mb-2">Limba Română</h3>
-                      <p className="text-muted text-sm font-medium mb-6 flex-grow">Eseuri structurate, caracterizări și teorie literară completă.</p>
-                      <div className="flex justify-between items-center mt-auto pt-4 border-t border-slate-100">
-                        <span className="text-text-main font-bold">{getSubjectPrice('romana-real', 'test-simplu')} MDL</span>
-                        <span className="material-symbols-outlined text-primary">add_shopping_cart</span>
-                      </div>
-                    </div>
-                  </Link>
-                  {/* Card 3 */}
-                  <Link href="/materie/istorie" className="group flex flex-col bg-white rounded-[16px] shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden border-t-4 border-amber-500">
-                    <div className="p-6 flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <span className="material-symbols-outlined text-2xl">history_edu</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-text-main mb-2">Istorie</h3>
-                      <p className="text-muted text-sm font-medium mb-6 flex-grow">Sinteze cronologice, lecții simplificate și rezolvări de subiecte.</p>
-                      <div className="flex justify-between items-center mt-auto pt-4 border-t border-slate-100">
-                        <span className="text-text-main font-bold">{getSubjectPrice('istorie', 'test-simplu')} MDL</span>
-                        <span className="material-symbols-outlined text-primary">add_shopping_cart</span>
-                      </div>
-                    </div>
-                  </Link>
-                  {/* Card 4 */}
-                  <Link href="/materie/biologie" className="group flex flex-col bg-white rounded-[16px] shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden border-t-4 border-emerald-500">
-                    <div className="p-6 flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <span className="material-symbols-outlined text-2xl">biotech</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-text-main mb-2">Biologie</h3>
-                      <p className="text-muted text-sm font-medium mb-6 flex-grow">Desene anatomice explicite și sinteze ușor de memorat.</p>
-                      <div className="flex justify-between items-center mt-auto pt-4 border-t border-slate-100">
-                        <span className="text-text-main font-bold">{getSubjectPrice('biologie', 'test-simplu')} MDL</span>
-                        <span className="material-symbols-outlined text-primary">add_shopping_cart</span>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-
-                <div className="mt-8 flex justify-center sm:hidden">
-                  <Link href="/catalog" className="flex items-center justify-center px-6 py-3 border-2 border-primary text-primary font-bold rounded-full w-full max-w-xs transition-colors hover:bg-blue-50">
-                    Vezi toate materiile
-                  </Link>
-                </div>
-              </div>
-
-              {/* Upsell Banner */}
-              <div className="px-4 md:px-10 py-16 pb-24">
-                <div className="bg-primary rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-soft flex flex-col md:flex-row items-center justify-between gap-8 group">
-                  <div className="absolute -right-20 -top-20 w-64 h-64 bg-white opacity-10 rounded-full transition-transform duration-700 group-hover:scale-110 group-hover:-translate-y-4"></div>
-                  <div className="absolute right-20 -bottom-20 w-48 h-48 bg-white opacity-10 rounded-full transition-transform duration-700 group-hover:scale-110 group-hover:translate-x-4"></div>
-                  
-                  <div className="relative z-10 flex-1">
-                    <div className="inline-block bg-warning text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 shadow-sm">Ofertă Specială</div>
-                  <div className="flex flex-col gap-1 items-start">
-                    <span className="text-lg font-black text-white font-display">Toate examenele BACALAUREAT 2026 (Varianta PDF)</span>
-                    <p className="text-blue-100 text-lg font-medium max-w-xl">Cumpără cele 3 materii sub formă de PDF și primești acces 100% gratuit la materialul bonus pentru Limba Engleză.</p>
-                  </div>
-                  </div>
-                  
-                  <div className="relative z-10 bg-white p-6 rounded-2xl flex flex-col items-center min-w-[250px] shadow-xl hover:shadow-2xl transition-shadow duration-300 transform group-hover:-translate-y-1">
-                    <span className="text-muted text-sm font-bold line-through mb-1">946 MDL</span>
-                    <span className="text-text-main text-4xl font-black mb-4">399 MDL</span>
-                    <Link href="/pachet" className="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-full transition-colors flex items-center justify-center gap-2 shadow-btn">
-                      Adaugă în coș <span className="material-symbols-outlined text-sm">shopping_bag</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </main>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* <!-- wp:group {"layout":{"type":"constrained"}} --> */}
+      {/* 2. CORE BENEFITS */}
+      <section className="py-24 bg-slate-50 relative entry-content">
+        <div className="layout-container px-4 md:px-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 text-primary flex items-center justify-center">
+                <span className="material-symbols-outlined text-3xl">lightbulb</span>
+              </div>
+              <h3 className="text-xl font-black text-text-main tracking-tight">Înveți mai inteligent</h3>
+              <p className="text-slate-500 font-medium leading-relaxed">Fără sute de pagini de teorie. Doar esența, explicată logic și pe înțelesul oricui.</p>
+            </div>
+            <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center">
+                <span className="material-symbols-outlined text-3xl">verified</span>
+              </div>
+              <h3 className="text-xl font-black text-text-main tracking-tight">Rezolvări pe Barem</h3>
+              <p className="text-slate-500 font-medium leading-relaxed">Te învățăm să scrii exact ce punctează profesorul, ca să obții nota maximă la fiecare exercițiu.</p>
+            </div>
+            <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center">
+                <span className="material-symbols-outlined text-3xl">bolt</span>
+              </div>
+              <h3 className="text-xl font-black text-text-main tracking-tight">Acces 24/7 de oriunde</h3>
+              <p className="text-slate-500 font-medium leading-relaxed">Primești totul pe email în format PDF. Poți învăța de pe telefon, tabletă sau laptop, oricând ai timp.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. SUBJECT CATALOG */}
+      <section id="catalog" className="py-24 px-4 md:px-10">
+        <div className="layout-container max-w-[1200px] mx-auto w-full flex flex-col items-center">
+          <div className="text-center mb-16 max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-black text-text-main mb-6 tracking-tight">Catalogul de Materii</h2>
+            <p className="text-lg text-slate-500 font-medium">Alege materia care îți dă cele mai mari bătăi de cap și descarcă variantele rezolvate chiar acum.</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+            {subjects.map((subject) => (
+              <Link
+                key={subject.id}
+                href={`/materie/${subject.id}`}
+                className="group bg-white border border-slate-100 p-6 rounded-3xl hover:border-primary hover:shadow-xl hover:shadow-primary/5 transition-all flex items-center justify-between"
+              >
+                <div className="flex items-center gap-5">
+                  <div className={`w-14 h-14 rounded-2xl ${subject.color} flex items-center justify-center transition-transform group-hover:scale-110`}>
+                    <span className="material-symbols-outlined text-2xl">{subject.icon}</span>
+                  </div>
+                  <div>
+                    <h4 className="font-black text-lg text-text-main leading-tight mb-1">{subject.name}</h4>
+                    <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">De la {getSubjectPrice(subject.id, 'test-simplu')} MDL</p>
+                  </div>
+                </div>
+                <span className="material-symbols-outlined text-slate-300 group-hover:text-primary group-hover:translate-x-1 transition-all">chevron_right</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. MEGA OFFER BANNER */}
+      <section className="py-24 px-4 md:px-10">
+        <div className="layout-container max-w-[1200px] mx-auto w-full">
+          <div className="bg-primary rounded-[40px] p-8 md:p-20 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12 group">
+            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+
+            <div className="relative z-10 flex-1 text-center lg:text-left">
+              <div className="inline-block bg-white/20 backdrop-blur-md text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] mb-6">Ofertă Limitată: 3 + 1 Gratis</div>
+              <h2 className="text-4xl md:text-6xl font-black text-white leading-tight mb-6 tracking-tight">Pachetul VIP <br /> <span className="text-blue-200 underline decoration-white/30 underline-offset-8 decoration-4">Bac-ul la cheie</span></h2>
+              <p className="text-blue-50 text-xl font-medium max-w-xl leading-relaxed mb-10 opacity-90">
+                Iei cele 3 materii de bază și primești <span className="font-black text-white italic">Limba Engleză Gratuit</span>. Toată programa de Bac într-un singur loc.
+              </p>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8">
+                <div className="flex flex-col items-center lg:items-start">
+                  <span className="text-blue-300 text-sm font-bold line-through mb-1">946 MDL</span>
+                  <span className="text-white text-5xl font-black tracking-tighter">399 MDL</span>
+                </div>
+                <Link href="/pachet" className="bg-white text-primary hover:bg-blue-50 font-black h-16 px-12 rounded-2xl flex items-center justify-center shadow-lg transition-all transform hover:-translate-y-1 active:scale-95 text-lg">
+                  Adaugă în Coș
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative z-10 w-full max-w-xs lg:max-w-sm">
+              <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-[32px] shadow-2xl flex flex-col gap-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-green-400 text-white flex items-center justify-center shadow-lg shadow-green-400/30">
+                    <span className="material-symbols-outlined text-sm font-black">check</span>
+                  </div>
+                  <span className="text-white font-bold tracking-tight">Variantele oficiale 2026</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-green-400 text-white flex items-center justify-center shadow-lg shadow-green-400/30">
+                    <span className="material-symbols-outlined text-sm font-black">check</span>
+                  </div>
+                  <span className="text-white font-bold tracking-tight">Rezolvări Complete Incluse</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-green-400 text-white flex items-center justify-center shadow-lg shadow-green-400/30">
+                    <span className="material-symbols-outlined text-sm font-black">check</span>
+                  </div>
+                  <span className="text-white font-bold tracking-tight">BAC Engleză (Cadou Gratuit)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FAQ SECTION */}
+      <FAQ />
+
+      {/* 6. FINAL CTA */}
+      <section className="py-32 px-4 md:px-10 text-center">
+        <div className="layout-container flex flex-col items-center gap-8">
+          <h2 className="text-3xl md:text-5xl font-black text-text-main tracking-tight max-w-2xl leading-tight">
+            Ești la un click distanță de a scăpa de stresul examenului.
+          </h2>
+          <p className="text-lg text-slate-500 font-medium max-w-lg mb-4">
+            Materialele oficiale sunt gata. Tu ești pregătit să iei nota pe care o meriți?
+          </p>
+          <Link
+            href="/pachet"
+            className="bg-primary hover:bg-blue-700 text-white font-black h-20 px-16 rounded-3xl shadow-btn shadow-primary/40 transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-4 text-xl"
+          >
+            Începe Pregătirea Acum
+            <span className="material-symbols-outlined text-2xl">rocket_launch</span>
+          </Link>
+          <p className="text-xs font-black text-slate-400 uppercase tracking-[0.3em]">Milioane de reușite încep cu un singur PDF.</p>
+        </div>
+      </section>
     </div>
   );
 }
+{/* <!-- wp:site-footer --> */}

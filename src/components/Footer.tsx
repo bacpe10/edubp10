@@ -22,9 +22,9 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="font-black text-slate-900 text-sm uppercase tracking-wider mb-4">Platformă</h4>
               <ul className="space-y-3 text-sm font-bold text-slate-500">
-                <li><Link href="/catalog" className="hover:text-primary transition-colors">Pachete</Link></li>
-                <li><Link href="/contact" className="hover:text-primary transition-colors">Suport</Link></li>
-                <li><Link href="/faq" className="hover:text-primary transition-colors">Întrebări</Link></li>
+                <li><Link href="/pachet" className="hover:text-primary transition-colors">Pachete</Link></li>
+                <li><a href="https://t.me/bacpe10" target="_blank" className="hover:text-primary transition-colors">Suport</a></li>
+                <li><Link href="/#faq" className="hover:text-primary transition-colors">Întrebări</Link></li>
               </ul>
             </div>
             <div>
@@ -32,18 +32,17 @@ const Footer: React.FC = () => {
               <ul className="space-y-3 text-sm font-bold text-slate-500">
                 <li><a href="https://tiktok.com/@bacpe10" target="_blank" className="hover:text-primary transition-colors">TikTok</a></li>
                 <li><a href="https://t.me/bacpe10" target="_blank" className="hover:text-primary transition-colors">Telegram</a></li>
-                <li><a href="https://instagram.com" target="_blank" className="hover:text-primary transition-colors">Instagram</a></li>
               </ul>
             </div>
           </div>
         </div>
 
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-black text-slate-400 uppercase tracking-widest">
-              <span>© {new Date().getFullYear()} BacPe10 Moldova</span>
-              <Link href="/terms" className="hover:text-slate-600 transition-colors underline decoration-slate-200 underline-offset-4">Termeni și Condiții</Link>
-              <Link href="/privacy" className="hover:text-slate-600 transition-colors underline decoration-slate-200 underline-offset-4">Confidențialitate</Link>
-            </div>
-          </div>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-black text-slate-400 uppercase tracking-widest">
+          <span>© {new Date().getFullYear()} BacPe10 Moldova</span>
+          <Link href="/terms" className="hover:text-slate-600 transition-colors underline decoration-slate-200 underline-offset-4">Termeni și Condiții</Link>
+          <Link href="/privacy" className="hover:text-slate-600 transition-colors underline decoration-slate-200 underline-offset-4">Confidențialitate</Link>
+        </div>
+      </div>
     </footer>
   );
 };
