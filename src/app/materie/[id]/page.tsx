@@ -95,14 +95,14 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
                   {hasOfficialPreview ? (
                     <div className="w-full h-full bg-white relative">
                       {/* Scrolling Content Layer */}
-                      <div className="w-full h-full overflow-y-auto scrollbar-hide">
+                      <div className="w-full h-full overflow-y-auto scroll-smooth">
                         <iframe
                           src={`${previewUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH&zoom=100`}
-                          className="w-full h-[150%] border-none select-none"
+                          className="w-full h-[500%] border-none select-none pointer-events-none"
                           title="PDF Preview"
                         />
                         {/* Buffer space so content isn't hidden forever behind the bar */}
-                        <div className="h-64 w-full"></div>
+                        <div className="h-96 w-full"></div>
                       </div>
 
                       {/* Fixed Bottom Overlay */}
@@ -129,10 +129,10 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
                                 colorClass: "bg-warning text-yellow-900"
                               });
                             }}
-                            className="w-full bg-primary hover:bg-blue-700 text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2"
+                            className="w-full bg-primary hover:bg-blue-700 text-white min-h-14 py-3 px-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2"
                           >
-                            Deblochează Pachetul Complet
-                            <span className="material-symbols-outlined text-[16px]">shopping_cart</span>
+                            <span className="text-center">Deblochează Pachetul Complet</span>
+                            <span className="material-symbols-outlined text-[16px] flex-shrink-0">shopping_cart</span>
                           </button>
                         </div>
                       </div>
@@ -242,10 +242,10 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
               <div className="flex flex-col gap-6 mt-auto border-t border-slate-100 pt-8">
                 <button
                   onClick={handleAddToCart}
-                  className="w-full h-[70px] bg-primary text-white text-xl font-black rounded-2xl shadow-lg shadow-primary/25 hover:bg-blue-700 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
+                  className="w-full min-h-[70px] py-4 px-6 bg-primary text-white text-xl font-black rounded-2xl shadow-lg shadow-primary/25 hover:bg-blue-700 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
                 >
-                  <span className="material-symbols-outlined font-normal text-2xl group-hover:rotate-12 transition-transform">shopping_bag</span>
-                  Vreau Materialele — {currentPrice} MDL
+                  <span className="material-symbols-outlined font-normal text-2xl group-hover:rotate-12 transition-transform flex-shrink-0">shopping_bag</span>
+                  <span className="text-center leading-tight">Vreau Materialele — {currentPrice} MDL</span>
                 </button>
 
                 <div className="grid grid-cols-3 gap-4">
@@ -282,9 +282,10 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
         </div>
         <button
           onClick={handleAddToCart}
-          className="flex-1 h-14 bg-primary text-white font-black rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-transform"
+          className="flex-1 min-h-14 py-3 px-4 bg-primary text-white font-black rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 active:scale-95 transition-transform"
         >
-          Cumpără Acum <span className="material-symbols-outlined text-lg">arrow_forward</span>
+          <span className="text-center leading-tight">Cumpără Acum</span>
+          <span className="material-symbols-outlined text-lg flex-shrink-0">arrow_forward</span>
         </button>
       </div>
 
@@ -324,14 +325,14 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
               <div className="flex flex-col gap-3 mt-2">
                 <button
                   onClick={() => performAddToCart("test-rezolvat")}
-                  className="w-full h-16 bg-primary text-white font-black rounded-2xl shadow-lg shadow-primary/30 flex items-center justify-center gap-3 transition-transform hover:scale-[1.02] active:scale-95 text-lg"
+                  className="w-full min-h-16 py-3 px-6 bg-primary text-white font-black rounded-2xl shadow-lg shadow-primary/30 flex items-center justify-center gap-3 transition-transform hover:scale-[1.02] active:scale-95 text-lg"
                 >
-                  DA, VREAU REZOLVĂRILE (+50 MDL)
-                  <span className="material-symbols-outlined">bolt</span>
+                  <span className="text-center leading-tight">DA, VREAU REZOLVĂRILE (+50 MDL)</span>
+                  <span className="material-symbols-outlined flex-shrink-0">bolt</span>
                 </button>
                 <button
                   onClick={() => performAddToCart("test-simplu")}
-                  className="w-full h-14 bg-slate-50 text-slate-400 font-bold rounded-2xl hover:bg-slate-100 transition-colors text-sm"
+                  className="w-full min-h-14 py-3 px-6 bg-slate-50 text-slate-400 font-bold rounded-2xl hover:bg-slate-100 transition-colors text-sm text-center leading-tight"
                 >
                   Nu mulțumesc, rămân la Testul Simplu
                 </button>

@@ -105,9 +105,10 @@ export default function CartDrawer() {
             <Link 
               href="/checkout"
               onClick={() => setIsCartOpen(false)}
-              className="w-full h-14 bg-primary hover:bg-blue-700 text-white font-bold text-lg rounded-xl flex items-center justify-center gap-2 shadow-btn transition-transform hover:-translate-y-0.5"
+              className="w-full min-h-14 py-3 px-6 bg-primary hover:bg-blue-700 text-white font-bold text-lg rounded-xl flex items-center justify-center gap-2 shadow-btn transition-transform hover:-translate-y-0.5"
             >
-              Către Finalizare Plată <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+              <span className="text-center leading-tight">Către Finalizare Plată</span>
+              <span className="material-symbols-outlined text-[20px] flex-shrink-0">arrow_forward</span>
             </Link>
           </div>
         )}

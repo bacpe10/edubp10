@@ -55,14 +55,14 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto mt-4">
                 <Link
                   href="/pachet"
-                  className="group w-full sm:w-auto bg-primary hover:bg-blue-700 text-white font-black h-20 px-12 rounded-[24px] shadow-[0_20px_40px_-10px_rgba(36,99,235,0.5)] transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-4 text-xl"
+                  className="group w-full sm:w-auto bg-primary hover:bg-blue-700 text-white font-black min-h-20 py-4 px-10 rounded-[24px] shadow-[0_20px_40px_-10px_rgba(36,99,235,0.5)] transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-4 text-xl"
                 >
-                  Vezi Pachetul Complet
-                  <span className="material-symbols-outlined text-2xl group-hover:translate-x-1 transition-transform">rocket_launch</span>
+                  <span className="text-center">Vezi Pachetul Complet</span>
+                  <span className="material-symbols-outlined text-2xl group-hover:translate-x-1 transition-transform flex-shrink-0">rocket_launch</span>
                 </Link>
                 <Link
                   href="/catalog"
-                  className="w-full sm:w-auto px-10 h-20 rounded-[24px] border-2 border-slate-100 font-black text-slate-600 hover:bg-slate-50 transition-all flex items-center justify-center text-lg"
+                  className="w-full sm:w-auto px-10 min-h-20 py-4 rounded-[24px] border-2 border-slate-100 font-black text-slate-600 hover:bg-slate-50 transition-all flex items-center justify-center text-lg text-center"
                 >
                   Alege Materia
                 </Link>
@@ -161,7 +161,7 @@ export default function Home() {
                   <span className="text-blue-300 text-sm font-bold line-through mb-1">946 MDL</span>
                   <span className="text-white text-5xl font-black tracking-tighter">399 MDL</span>
                 </div>
-                <Link href="/pachet" className="bg-white text-primary hover:bg-blue-50 font-black h-16 px-12 rounded-2xl flex items-center justify-center shadow-lg transition-all transform hover:-translate-y-1 active:scale-95 text-lg">
+                <Link href="/pachet" className="bg-white text-primary hover:bg-blue-50 font-black min-h-16 py-3 px-10 rounded-2xl flex items-center justify-center shadow-lg transition-all transform hover:-translate-y-1 active:scale-95 text-lg text-center">
                   Adaugă în Coș
                 </Link>
               </div>
@@ -207,10 +207,10 @@ export default function Home() {
           </p>
           <Link
             href="/pachet"
-            className="bg-primary hover:bg-blue-700 text-white font-black h-20 px-16 rounded-3xl shadow-btn shadow-primary/40 transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-4 text-xl"
+            className="bg-primary hover:bg-blue-700 text-white font-black min-h-20 py-4 px-12 rounded-3xl shadow-btn shadow-primary/40 transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-4 text-xl"
           >
-            Începe Pregătirea Acum
-            <span className="material-symbols-outlined text-2xl">rocket_launch</span>
+            <span className="text-center">Începe Pregătirea Acum</span>
+            <span className="material-symbols-outlined text-2xl flex-shrink-0">rocket_launch</span>
           </Link>
           <p className="text-xs font-black text-slate-400 uppercase tracking-[0.3em]">Milioane de reușite încep cu un singur PDF.</p>
         </div>

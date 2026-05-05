@@ -187,19 +187,19 @@ export default function CheckoutPage() {
                       href={telegramLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-3 bg-[#229ED9] hover:bg-[#1c88ba] text-white font-black text-sm uppercase tracking-wide py-4.5 rounded-xl shadow-[0_8px_16px_-6px_rgba(34,158,217,0.5)] transition-transform hover:-translate-y-1 active:scale-95"
+                      className="flex items-center justify-center gap-3 bg-[#229ED9] hover:bg-[#1c88ba] text-white font-black text-sm uppercase tracking-wide min-h-[58px] py-4 px-6 rounded-xl shadow-[0_8px_16px_-6px_rgba(34,158,217,0.5)] transition-transform hover:-translate-y-1 active:scale-95 text-center flex-wrap"
                     >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.888-.662 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" /></svg>
-                      Confirmă pe Telegram
+                      <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.888-.662 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" /></svg>
+                      <span className="flex-1">Confirmă pe Telegram</span>
                     </a>
                     <a
                       href="https://tiktok.com/@bacpe10"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-3 bg-slate-900 hover:bg-black text-white font-black text-sm uppercase tracking-wide py-4.5 rounded-xl shadow-[0_8px_16px_-6px_rgba(0,0,0,0.5)] transition-transform hover:-translate-y-1 active:scale-95"
+                      className="flex items-center justify-center gap-3 bg-slate-900 hover:bg-black text-white font-black text-sm uppercase tracking-wide min-h-[58px] py-4 px-6 rounded-xl shadow-[0_8px_16px_-6px_rgba(0,0,0,0.5)] transition-transform hover:-translate-y-1 active:scale-95 text-center flex-wrap"
                     >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.18-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.12-3.44-3.17-3.41-5.46.02-2.33 1.15-4.46 3.06-5.69 1.18-.75 2.58-1.08 3.98-1.05v4.06c-.63-.04-1.27.14-1.81.48-.95.59-1.53 1.67-1.46 2.78.05 1.12.63 2.15 1.58 2.72.76.47 1.69.6 2.55.37.94-.25 1.75-.95 2.05-1.9.15-.43.2-.88.19-1.33.01-4.52-.02-9.05.02-13.57.01-.13-.01-.26-.02-.39z" /></svg>
-                      Confirmă pe TikTok
+                      <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.18-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.12-3.44-3.17-3.41-5.46.02-2.33 1.15-4.46 3.06-5.69 1.18-.75 2.58-1.08 3.98-1.05v4.06c-.63-.04-1.27.14-1.81.48-.95.59-1.53 1.67-1.46 2.78.05 1.12.63 2.15 1.58 2.72.76.47 1.69.6 2.55.37.94-.25 1.75-.95 2.05-1.9.15-.43.2-.88.19-1.33.01-4.52-.02-9.05.02-13.57.01-.13-.01-.26-.02-.39z" /></svg>
+                      <span className="flex-1">Confirmă pe TikTok</span>
                     </a>
                   </div>
                 </div>
@@ -281,17 +281,20 @@ export default function CheckoutPage() {
                                       cryptoType === "eth" ? "Rețeaua Ethereum" : "Rețeaua Solana"
                                 })
                               </p>
-                              <code className="text-sm md:text-base font-black text-slate-800 flex items-center justify-center gap-2 select-all relative group break-words text-center">
-                                {address}
-                                <span
-                                  className="material-symbols-outlined text-sm text-slate-400 cursor-pointer hover:text-primary active:scale-90 transition-transform"
+                              <div className="flex flex-col items-center gap-2">
+                                <code className="text-[11px] sm:text-sm md:text-base font-black text-slate-800 break-all select-all relative group text-center leading-relaxed">
+                                  {address}
+                                </code>
+                                <button
                                   onClick={() => {
                                     navigator.clipboard.writeText(address);
                                   }}
+                                  className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg transition-colors mt-1"
                                 >
-                                  content_copy
-                                </span>
-                              </code>
+                                  <span className="material-symbols-outlined text-sm">content_copy</span>
+                                  <span className="text-[10px] font-black uppercase tracking-wider">Copiază Adresa</span>
+                                </button>
+                              </div>
                             </div>
 
                             <div className="flex items-start gap-2 bg-yellow-50 text-yellow-800 p-3 rounded-lg border border-yellow-200 text-xs font-medium">
