@@ -1,10 +1,11 @@
+import CartDrawer from "@/components/CartDrawer";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import UpsellModal from "@/components/UpsellModal";
+import { CartProvider } from "@/context/CartContext";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Spline_Sans } from "next/font/google";
-import { CartProvider } from "@/context/CartContext";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
-import UpsellModal from "@/components/UpsellModal";
 import "./globals.css";
 
 const splineSans = Spline_Sans({
@@ -81,6 +82,7 @@ export default function RootLayout({
           <Footer />
           <CartDrawer />
         </CartProvider>
+        <Analytics />
       </body>
     </html>
   );

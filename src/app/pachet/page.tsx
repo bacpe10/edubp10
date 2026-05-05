@@ -38,14 +38,15 @@ export default function Pachet() {
                       Exclusiv Bac 2026
                     </span>
                     <span className="inline-block bg-warning text-yellow-900 text-sm font-bold px-4 py-1.5 rounded-full shadow-sm">
-                      Succes Garantat 100%
+                      Pregătire Eficientă
                     </span>
                   </div>
                   <h1 className="text-4xl sm:text-6xl font-black leading-tight tracking-tight text-text-main font-display">
-                    Pachetul <span className="text-primary">Bac-ul tău la cheie</span>
+                    BAC-ul 2026, <br />
+                    <span className="text-primary">Gata Rezolvat</span>
                   </h1>
                   <p className="text-xl text-slate-600 max-w-xl leading-relaxed">
-                    De ce să mai înveți când poți avea <span className="text-text-main font-bold italic underline decoration-primary">Bac-ul gata rezolvat?</span> Primești toate cele 3 materii de bază <span className="text-primary font-black">+ Limba Engleză GRATUIT.</span>
+                    Nu te mai chinui cu învățatul. Ai toate cele 3 materii de bază <span className="text-primary font-black">rezolvate integral</span> + Limba Engleză GRATUIT.
                   </p>
 
                   {/* Social Proof */}
@@ -57,7 +58,7 @@ export default function Pachet() {
                         </div>
                       ))}
                     </div>
-                    <span className="text-xs font-bold text-slate-600 tracking-tight">Peste 7,000 de elevi au luat BAC-ul cu noi anul trecut!</span>
+                    <span className="text-xs font-bold text-slate-600 tracking-tight">Peste 1,200 de elevi au reușit cu noi anul trecut!</span>
                   </div>
                 </div>
 
@@ -115,8 +116,8 @@ export default function Pachet() {
                         <span className="material-symbols-outlined text-sm font-black" style={{ fontVariationSettings: "'FILL' 1" }}>task_alt</span>
                       </div>
                       <div>
-                        <h4 className="font-bold text-text-main text-lg leading-none mb-1">Română: Eseuri Gata de Copiat</h4>
-                        <p className="text-slate-500 text-sm leading-relaxed">Nu mai compune tu. Am pregătit eseuri care respectă 100% baremul pentru nota maximă la Subiectul III.</p>
+                        <h4 className="font-bold text-text-main text-lg leading-none mb-1">Română: Eseuri Structurate</h4>
+                        <p className="text-slate-500 text-sm leading-relaxed">Primești modele de eseuri care respectă 100% baremul oficial pentru Subiectul III.</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
@@ -146,9 +147,9 @@ export default function Pachet() {
                       </div>
                       <div>
                         <h4 className="font-black text-yellow-800 text-lg flex items-center gap-2 leading-none mb-1">
-                          Zero Efort: Totul este gata
+                          Pregătire Fără Stres
                         </h4>
-                        <p className="text-yellow-700/80 text-xs">Cumperi azi pachetul și ai garanția că intri în examen cu toate răspunsurile în buzunar.</p>
+                        <p className="text-yellow-700/80 text-xs">Cumperi azi pachetul și ai siguranța că ești gata pentru orice subiect de examen.</p>
                       </div>
                     </li>
                   </ul>
@@ -169,8 +170,8 @@ export default function Pachet() {
                               {selectedTier === "test-simplu" && <div className="w-3 h-3 bg-primary rounded-full"></div>}
                             </div>
                             <div>
-                              <h3 className="font-bold text-text-main">Pachetul Standard</h3>
-                              <p className="text-slate-500 text-xs mt-0.5">Doar materialele teoretice și testele PDF.</p>
+                              <h3 className="font-bold text-text-main">Material Teoretic</h3>
+                              <p className="text-slate-500 text-xs mt-0.5">Doar subiectele și suportul de bază fără rezolvări.</p>
                             </div>
                           </div>
                           <span className="font-black text-xl text-text-main">{PRICES.BUNDLE_STANDARD} MDL</span>
@@ -191,9 +192,9 @@ export default function Pachet() {
                               {selectedTier === "test-rezolvat" && <div className="w-3 h-3 bg-primary rounded-full"></div>}
                             </div>
                             <div>
-                              <h3 className="font-black text-lg text-primary leading-tight">Pachet Premium <span className="text-text-main">(+ Rezolvări)</span></h3>
+                              <h3 className="font-black text-lg text-primary leading-tight">Pachet Premium <span className="text-text-main">(Gata Rezolvat)</span></h3>
                               <p className="text-slate-600 text-xs mt-1 font-medium leading-relaxed italic">
-                                Include testele rezolvate integral + Baremuri explicate.
+                                Scapi de efort: Include testele rezolvate integral + Baremuri.
                               </p>
                             </div>
                           </div>
@@ -225,8 +226,8 @@ export default function Pachet() {
                         <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>verified_user</span>
                       </div>
                       <div>
-                        <h4 className="font-bold text-text-main text-sm">Garanție de Fier</h4>
-                        <p className="text-slate-500 text-[11px]">Dacă nu ești mulțumit în 14 zile, primești banii înapoi fără întrebări.</p>
+                        <h4 className="font-bold text-text-main text-sm">Garanția Calității</h4>
+                        <p className="text-slate-500 text-[11px]">Dacă materialele nu corespund așteptărilor, contactează-ne pentru suport sau retur.</p>
                       </div>
                     </div>
                     <div className="bg-green-50 border border-green-100 rounded-2xl p-4 flex items-center gap-4 flex-1">

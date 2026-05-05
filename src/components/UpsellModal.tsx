@@ -72,7 +72,7 @@ export default function UpsellModal() {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-4 tracking-tight">
-            Așteaptă! Vrei să iei <span className="text-primary underline decoration-blue-200 decoration-4 underline-offset-4">totul</span>?
+            Vrei pachetul <span className="text-primary underline decoration-blue-200 decoration-4 underline-offset-4">complet</span>?
           </h2>
 
           <p className="text-slate-600 text-lg font-medium leading-relaxed mb-8">
@@ -97,7 +97,7 @@ export default function UpsellModal() {
               onClick={handleUpgrade}
               className="w-full bg-primary hover:bg-blue-700 text-white min-h-[70px] py-4 px-6 rounded-3xl font-black text-lg shadow-[0_12px_24px_-8px_rgba(36,99,235,0.5)] transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3"
             >
-              <span className="text-center leading-tight">DA, VREAU PACHETUL COMPLET</span>
+              <span className="text-center leading-tight">IA PACHETUL COMPLET</span>
             </button>
 
             <button

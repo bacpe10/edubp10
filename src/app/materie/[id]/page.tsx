@@ -4,6 +4,17 @@ import { getSubjectPrice, PRICES } from "@/constants/products";
 import { useCart } from "@/context/CartContext";
 import Link from "next/link";
 import { use, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
+
+const PDFPreview = dynamic(() => import("@/components/PDFPreview"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 gap-4">
+      <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin"></div>
+      <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">Pregătim documentul...</p>
+    </div>
+  ),
+});
 
 export default function SubjectPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
@@ -76,7 +87,7 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
           {/* Left Column: Product Visuals & Mockup */}
           <div className="w-full lg:w-5/12">
             <div className="sticky top-8 flex flex-col gap-6">
-              <div className="w-full rounded-2xl bg-white shadow-soft border border-gray-100 overflow-hidden relative group p-1 flex flex-col">
+              <div className="w-full rounded-t-2xl rounded-b-4xl bg-white shadow-soft border border-gray-100 overflow-hidden relative group p-1 flex flex-col">
                 {/* Visual PDF Frame */}
                 <div className="w-full bg-slate-900 px-4 py-3 flex items-center justify-between rounded-t-xl">
                   <div className="flex gap-1.5">
@@ -91,18 +102,12 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
                 </div>
 
                 {/* The Document Content */}
-                <div className="w-full bg-slate-100 relative aspect-[2/3] sm:aspect-[3/4] overflow-hidden rounded-b-xl border-t border-slate-100">
+                <div className="w-full bg-slate-100 relative aspect-[3/4] overflow-hidden rounded-b-xl border-t border-slate-100">
                   {hasOfficialPreview ? (
                     <div className="w-full h-full bg-white relative">
-                      {/* Scrolling Content Layer */}
-                      <div className="w-full h-full overflow-y-auto scroll-smooth">
-                        <iframe
-                          src={`${previewUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH&zoom=100`}
-                          className="w-full h-[500%] border-none select-none pointer-events-none"
-                          title="PDF Preview"
-                        />
-                        {/* Buffer space so content isn't hidden forever behind the bar */}
-                        <div className="h-96 w-full"></div>
+                      {/* Specialized PDF Preview Component */}
+                      <div className="w-full h-full rounded-b-4xl overflow-hidden">
+                        <PDFPreview file={previewUrl} />
                       </div>
 
                       {/* Fixed Bottom Overlay */}
@@ -186,7 +191,8 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
                 <div className="bg-blue-50 text-primary text-[10px] font-black tracking-widest uppercase px-3 py-1 inline-block rounded-full mb-3 border border-blue-100">
                   Format PDF • Acces Instant
                 </div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl leading-tight font-black text-slate-900 font-display mb-3 tracking-tighter">Variante Examen: {subjectName}</h1>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl leading-tight font-black text-slate-900 font-display mb-3 tracking-tighter">Examen Gata Rezolvat: {subjectName}</h1>
+                <p className="text-slate-500 font-medium text-lg leading-relaxed">Nu mai irosi timpul cu învățatul. Ai toate subiectele rezolvate și explicate, gata pentru examen.</p>
 
               </div>
 
@@ -203,9 +209,9 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
                         <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedTier === "test-simplu" ? "border-slate-600" : "border-slate-300"}`}>
                           {selectedTier === "test-simplu" && <div className="w-2.5 h-2.5 bg-slate-600 rounded-full"></div>}
                         </div>
-                        Pachet Standard (Doar Subiectele)
+                        Material Teoretic
                       </h3>
-                      <p className="text-slate-500 text-sm mt-1 ml-7">Primești subiectele oficiale în format PDF, pregătite pentru print.</p>
+                      <p className="text-slate-500 text-sm mt-1 ml-7">Doar subiectele oficiale și suportul teoretic de bază.</p>
                     </div>
                     <span className="font-black text-xl text-slate-700">{getSubjectPrice(resolvedParams.id, 'test-simplu')} MDL</span>
                   </div>
@@ -218,7 +224,7 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
                 >
                   {/* Bestseller indicator */}
                   <div className="absolute top-0 right-0 bg-warning text-yellow-900 text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl shadow-sm">
-                    Alegerea Nr. #1
+                    Recomandat
                   </div>
 
                   <div className="flex items-start justify-between mt-1">
@@ -230,7 +236,7 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
                         Pachet Plus (Subiecte + Rezolvări)
                       </h3>
                       <p className="text-slate-600 text-sm mt-1 ml-7 italic leading-relaxed">
-                        <strong>Metoda Sigură!</strong> Primești subiectele oficiale plus rezolvările complete explicate pe barem. Știi exact ce să scrii pentru nota 10.
+                        <strong>Scapi de stres!</strong> Primești toate subiectele rezolvate integral conform baremului oficial. Totul este pregătit pentru tine.
                       </p>
                     </div>
                     <span className="font-black text-xl text-primary">{getSubjectPrice(resolvedParams.id, 'test-rezolvat')} MDL</span>
@@ -307,7 +313,7 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
                     <span className="material-symbols-outlined text-lg">check_circle</span>
                   </div>
                   <div>
-                    <p className="font-black text-slate-800 leading-none mb-1">Nota 10 garantată pe barem</p>
+                    <p className="font-black text-slate-800 leading-none mb-1">Pregătire pe Barem</p>
                     <p className="text-slate-500 text-xs font-medium">Vezi exact pașii pe care îi punctează profesorii.</p>
                   </div>
                 </div>
@@ -327,7 +333,7 @@ export default function SubjectPage({ params }: { params: Promise<{ id: string }
                   onClick={() => performAddToCart("test-rezolvat")}
                   className="w-full min-h-16 py-3 px-6 bg-primary text-white font-black rounded-2xl shadow-lg shadow-primary/30 flex items-center justify-center gap-3 transition-transform hover:scale-[1.02] active:scale-95 text-lg"
                 >
-                  <span className="text-center leading-tight">DA, VREAU REZOLVĂRILE (+50 MDL)</span>
+                  <span className="text-center leading-tight">ADĂUGĂ REZOLVĂRILE (+50 MDL)</span>
                   <span className="material-symbols-outlined flex-shrink-0">bolt</span>
                 </button>
                 <button

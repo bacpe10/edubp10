@@ -7,12 +7,17 @@ const Footer: React.FC = () => {
       <div className="max-w-[1200px] mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start gap-10 mb-12">
           <div className="max-w-xs">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="material-symbols-outlined text-white text-xl">auto_stories</span>
+            <Link href="/" className="flex items-center gap-3 mb-6 group">
+              <img 
+                src="/images/logo.svg" 
+                alt="Bac pe 10 Logo" 
+                className="h-9 w-auto"
+              />
+              <div className="flex flex-col">
+                <span className="font-black text-lg tracking-tighter text-slate-900 leading-none">Bac pe 10</span>
+                <span className="text-[9px] font-bold text-primary uppercase tracking-widest mt-0.5">Bac 2026</span>
               </div>
-              <span className="font-black text-xl tracking-tighter text-slate-900">BacPe10<span className="text-primary">.md</span></span>
-            </div>
+            </Link>
             <p className="text-slate-500 text-sm font-medium leading-relaxed">
               Cea mai avansată platformă de pregătire pentru Bacalaureat din Moldova. Succes garantat prin materiale sintetizate.
             </p>

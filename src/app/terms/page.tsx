@@ -71,7 +71,7 @@ export default function TermsPage() {
 
       <div className="mt-16 pt-8 border-t border-slate-100 text-center">
         <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">
-          Contact Juridic: contact@bacpe10.md
+          Contact Juridic: contact@bacpe10.com
         </p>
       </div>
     </div>

@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export default function Home() {
   // Dynamic student count calculation
-  const startCount = 7430;
+  const startCount = -1003;
   const daysSinceStart = Math.floor((new Date().getTime() - new Date('2024-09-01').getTime()) / (1000 * 60 * 60 * 24));
-  const studentCount = startCount + (daysSinceStart * 12);
+  const studentCount = startCount + (daysSinceStart * 2);
 
   const subjects = [
     { id: 'romana', name: 'Limba Română', icon: 'menu_book', color: 'bg-orange-50 text-orange-600' },
@@ -40,16 +40,16 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <span className="text-sm font-black text-slate-700 tracking-tight">Peste {studentCount.toLocaleString()} de elevi reușiți</span>
+                <span className="text-sm font-black text-slate-700 tracking-tight">Peste {studentCount.toLocaleString()} au deja exemenul de bază</span>
               </div>
 
               <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-text-main leading-[0.95] tracking-tighter font-display drop-shadow-sm">
-                Ia BAC-ul <br />
-                <span className="text-primary relative inline-block">Din Prima<div className="absolute -bottom-4 left-0 w-full h-3 bg-yellow-400 opacity-40 rounded-full"></div></span>
+                BAC-ul 2026, <br />
+                <span className="text-primary relative inline-block">Gata Rezolvat<div className="absolute -bottom-4 left-0 w-full h-3 bg-yellow-400 opacity-40 rounded-full"></div></span>
               </h1>
 
               <p className="text-xl md:text-3xl text-slate-500 font-medium leading-relaxed max-w-2xl">
-                Variantele de la BAC 2026, rezolvate explicate. Tot ce ai nevoie ca să iei un <span className="text-text-main font-black">10 sigur</span>.
+                Nu te mai chinui cu mii de pagini. Ai toate variantele rezolvate și explicate integral. <span className="text-text-main font-black">Scapi de stres</span> și iei nota maximă fără efort.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto mt-4">
@@ -218,4 +218,4 @@ export default function Home() {
     </div>
   );
 }
-{/* <!-- wp:site-footer --> */}
+{/* <!-- wp:site-footer --> */ }
